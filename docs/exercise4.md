@@ -81,7 +81,7 @@ const isEven = a => {
 And with implicit return as well:
 
 ```javascript
-const isEven = (a) => a % 2 === 0;
+const isEven = a => a % 2 === 0;
 ```
 
 See here for: [Exercises 5 - Docs](./exercise5.md)
