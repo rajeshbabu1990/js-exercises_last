@@ -10,6 +10,18 @@ export function getSquares(nums) {
 export function camelCaseWords(words) {
 	if (words === undefined) throw new Error('words is required');
 	// Your code here!
+	if (words.length === 0) {
+		return '';
+	  }
+	
+	  // Capitalize the first word and concatenate the rest
+	  const camelCased = words.reduce((result, word, index) => {
+		const isFirstWord = index === 0;
+		const capitalizedWord = isFirstWord ? word : word.charAt(0).toUpperCase() + word.slice(1);
+		return result + capitalizedWord;
+	  }, '');
+	
+	  return camelCased;
 	
 }
 
@@ -17,7 +29,14 @@ export function getTotalSubjects(people) {
 	if (people === undefined) throw new Error('people is required');
 	// Your code here!
 
-}
+	const totalSubjects = people.reduce((total, person) => {
+		return total + (person.subjects ? person.subjects.length : 0);
+	  }, 0);
+	
+	  return totalSubjects;
+	}
+
+
 
 export function checkIngredients(menu, ingredient) {
 	if (menu === undefined) throw new Error('menu is required');
@@ -35,17 +54,15 @@ export function duplicateNumbers(arr1, arr2) {
 	if (arr1 === undefined) throw new Error('arr1 is required');
 	if (arr2 === undefined) throw new Error('arr2 is required');
 	// Your code here!
-	const firstarray=arr1.length;
-	const secondarray=arr2.length;
-	let emptyarray=[];
-	if(firstarray>secondarray){
-		for(let i=0;i<firstarray;i++){
-			for(let j=o;j<secondarray;j++){
-				if(arr1[i]===arr2[j]){
-					emptyarray=emptyarray.concat(arr2[j]);
-				}
-			}
+	const duplicateNumbersArray = [];
+
+	for (let i = 0; i < arr1.length; i++) {
+	  for (let j = 0; j < arr2.length; j++) {
+		if (arr1[i] === arr2[j] && !duplicateNumbersArray.includes(arr1[i])) {
+		  duplicateNumbersArray.push(arr1[i]);
 		}
+	  }
 	}
-	
-}
+  
+	return duplicateNumbersArray.sort();
+  }
